@@ -3,16 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BannerComponent } from './component/banner/banner.component';
-import { Banner2Component } from './component/banner2/banner2.component';
+import { ButtonEventComponent } from './component/button-event/button-event.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     BannerComponent,
-    Banner2Component
+    ButtonEventComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,7 +8,6 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics, setConsent } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -26,18 +25,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 let app = initializeApp(firebaseConfig);
-// setConsent({
-//   'ad_storage': 'granted',
-//   'analytics_storage': 'granted',
-//   'functionality_storage': 'granted',
-//   'personalization_storage': 'granted',
-//   'security_storage': 'granted'
-// })
-let analytics = getAnalytics(app);
-// setConsent({
-//   'ad_storage': 'denied',
-//   'analytics_storage': 'denied',
-//   'functionality_storage': 'denied',
-//   'personalization_storage': 'denied',
-//   'security_storage': 'denied'
-// })
+
+// si Se realiza la instancia de analytics antes del consentimiento, no se podrá
+// modificar después
+// let analytics = getAnalytics(app);
