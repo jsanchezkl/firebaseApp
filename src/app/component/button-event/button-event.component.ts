@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { getAnalytics, logEvent } from 'firebase/analytics';
+import { getAnalytics, logEvent, setUserId } from 'firebase/analytics';
 
 @Component({
   selector: 'app-button-event',

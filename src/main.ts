@@ -26,6 +26,7 @@ const firebaseConfig = {
 // Initialize Firebase
 let app = initializeApp(firebaseConfig);
 
+
 // si Se realiza la instancia de analytics antes del consentimiento, no se podrá
 // modificar después
 // let analytics = getAnalytics(app);

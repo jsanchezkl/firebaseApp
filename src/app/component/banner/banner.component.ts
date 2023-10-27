@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ConsentSettings, getAnalytics, logEvent, setConsent } from 'firebase/analytics';
+import { getAnalytics, logEvent, setConsent, setUserId } from 'firebase/analytics';
 
 @Component({
   selector: 'app-banner',
@@ -48,6 +48,7 @@ export class BannerComponent {
     })
     console.log(this.marketing, this.analytics)
     const analytics = getAnalytics()
+    setUserId(analytics, "1234")
     logEvent(analytics, 'click',{
       'click_event': 'button',
       'click_detail': "Aceptar seleccion",
