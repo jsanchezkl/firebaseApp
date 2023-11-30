@@ -145,6 +145,12 @@
   <p>What do you want to do next with your app?</p>
 
   <div class="container" >
+    <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="aceptarTodo()">
+      Aceptar Todo
+    </button>
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="rechazarTodo()">
+      Rechazar Todo
+    </button>
     <app-banner></app-banner>
     <app-button-event></app-button-event>
   </div>

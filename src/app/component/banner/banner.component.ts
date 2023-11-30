@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef } from '@angular/core';
 import { getAnalytics, logEvent, setConsent, setUserId } from 'firebase/analytics';
 
 @Component({
@@ -12,18 +12,22 @@ export class BannerComponent {
   analytics=  true
   funcionality = true
   preferences = true;
-  
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   modificarSeleccion($event: any){
     this.marketing = $event.target.value
     this.analytics = $event.target.value
     this.funcionality = $event.target.value
     this.preferences = $event.target.value
+
+    this.cdr.detectChanges();
   }
-  
-  aceptarTodo() { 
+
+  aceptarTodo() {
     setConsent(
       {
+        //ad_storage = ConsentStatus.GRANTED,
         ad_storage: "granted",
         analytics_storage: "granted",
         functionality_storage: 'granted',
@@ -36,16 +40,17 @@ export class BannerComponent {
       'click_detail': "Aceptar consentimiento",
       'flow': "consent"
     })
-    
+
   }
 
   aceptarSeleccionados($event: any){
-    setConsent({ 
+    setConsent({
       analytics_storage: this.analytics ? "granted" : "denied",
       ad_storage: this.marketing ? "granted" : "denied",
       functionality_storage: this.funcionality ? "granted" : "denied",
       personalization_storage: this.preferences ? "granted" : "denied",
     })
+    this.cdr.detectChanges();
     console.log(this.marketing, this.analytics)
     const analytics = getAnalytics()
     setUserId(analytics, "1234")
@@ -55,7 +60,7 @@ export class BannerComponent {
       'flow': "consent"
     })
   }
-  rechazarTodo() { 
+  rechazarTodo() {
     setConsent(
       {
         ad_storage: "denied",
@@ -64,6 +69,7 @@ export class BannerComponent {
         personalization_storage: 'denied'
       }
     )
+    this.cdr.detectChanges();
     const analytics = getAnalytics()
       logEvent(analytics, 'click',{
         'click_event': 'button',
@@ -127,4 +133,4 @@ export class BannerComponent {
 //         gtag("consent", "update", consent);
 //         localStorage.setItem("consentMode", JSON.stringify(consentMode));
 //     }
-// </script> 
+// </script>
